@@ -4,6 +4,7 @@ import path from "path";
 import favicon from "serve-favicon";
 import helmet from "helmet";
 import logger from "morgan";
+import cookieParser from "cookie-parser";
 import { ERR } from "./middleware/midError";
 import { userRt } from "./routes/UserRT";
 
@@ -29,6 +30,7 @@ import { userRt } from "./routes/UserRT";
 
     app.use(express.urlencoded({ extended: false }));
     app.use(express.json());
+    app.use(cookieParser());
     app.use(logger("dev"));
     app.use("/api", userRt);
     app.use(ERR.notFound);
