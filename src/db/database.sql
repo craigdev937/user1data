@@ -16,6 +16,7 @@ CREATE TABLE products (
     description TEXT,
     price NUMERIC(10,2) NOT NULL,
     image TEXT,
+    cloudinary_id VARCHAR,
     user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP

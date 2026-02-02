@@ -20,11 +20,15 @@ export const LoginSchema = z.object({
         .min(6, { message: "Must be at least 6 characters." })
 });
 
+
+
 export const ProdSchema = z.object({
-    name: z.string(),
-    description: z.string(),
-    price: z.number(),
-    image: z.string()
+    name: z.string().min(1, "Name is required!"),
+    description: z.string().min(1, "Description is required!"),
+    // "coerce" converts string to a number.
+    price: z.coerce.number().positive(),
+    image: z.string(),
+    cloudinary_id: z.string()
 });
 
 export const OrderSchema = z.object({

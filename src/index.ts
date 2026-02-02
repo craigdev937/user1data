@@ -7,6 +7,7 @@ import logger from "morgan";
 import cookieParser from "cookie-parser";
 import { ERR } from "./middleware/midError";
 import { userRt } from "./routes/UserRT";
+import { prodRt } from "./routes/ProductRT";
 
 (async () => {
     const app: express.Application = express();
@@ -33,6 +34,7 @@ import { userRt } from "./routes/UserRT";
     app.use(cookieParser());
     app.use(logger("dev"));
     app.use("/api", userRt);
+    app.use("/api", prodRt);
     app.use(ERR.notFound);
     app.use(ERR.errHandler);
     const port = process.env.PORT;
